@@ -1,9 +1,9 @@
 "use client";
 
-import StoreModal from '@/components/modals/store-modal';
 import { useEffect, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 
-const ModalProvider = () => {
+const ToastProvider = () => {
 
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
@@ -16,8 +16,8 @@ const ModalProvider = () => {
   }
 
   return (
-    <StoreModal />
+    <Toaster />
   )
 }
 
-export default ModalProvider;
+export default ToastProvider

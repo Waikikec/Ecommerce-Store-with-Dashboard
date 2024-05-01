@@ -1,0 +1,12 @@
+services:
+
+  db2:
+    image: postgres
+    restart: always
+
+    environment:
+      POSTGRES_USER: martinyankov
+      POSTGRES_PASSWORD: Logitech900330
+      POSTGRES_DB: ecommerce-admin
+    ports:
+      - 5432:5432

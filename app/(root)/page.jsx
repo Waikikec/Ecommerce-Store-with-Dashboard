@@ -1,9 +1,15 @@
 "use client";
 
 import useStore from "@/hooks/useStore";
-import { useEffect } from "react";
+
+import { useEffect, useState } from "react";
 
 const SetupPage = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const onOpen = useStore((state) => state.onOpen);
   const isOpen = useStore((state) => state.isOpen);
@@ -16,7 +22,7 @@ const SetupPage = () => {
 
   return (
     <div className="p-4">
-      Root Page
+      {isClient ? "Root Page" : "" }
     </div>
   )
 }
