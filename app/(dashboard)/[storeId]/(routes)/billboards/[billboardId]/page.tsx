@@ -1,4 +1,4 @@
-import BillboardForm from "@/components/billboard-form";
+import BillboardForm from "@/components/billboards/billboard-form";
 import prismadb from "@/lib/prismaDb";
 
 interface BillboardPageProps {

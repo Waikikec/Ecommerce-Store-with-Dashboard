@@ -1,19 +1,19 @@
 "use client";
 
+import { BillboardColumn, BillboardColumns } from "@/components/billboards/columns";
 import { DataTable } from "@/components/date-table";
 import { Button } from "@/components/ui/button";
 import Heading from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
 import { Plus } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
-import ApiList from "./api-list";
-import { SizeColumn, SizeColumns } from "./sizes/columns";
+import ApiList from "../api-list";
 
-interface SizeClientProps {
-  data: SizeColumn[]
+interface BillboardClientProps {
+  data: BillboardColumn[]
 };
 
-const SizeClient = ({ data }: SizeClientProps) => {
+const BillboardClient = ({ data }: BillboardClientProps) => {
 
   const router = useRouter();
   const params = useParams();
@@ -22,10 +22,10 @@ const SizeClient = ({ data }: SizeClientProps) => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Sizes (${data.length})`}
-          description="Manage sizes for your store"
+          title={`Billboards (${data.length})`}
+          description="Manage billboards for your store"
         />
-        <Button onClick={() => router.push(`/${params.storeId}/sizes/new`)}>
+        <Button onClick={() => router.push(`/${params.storeId}/billboards/new`)}>
           <Plus className="mr-2 h-4 w-4" />
           Add New
         </Button>
@@ -34,22 +34,22 @@ const SizeClient = ({ data }: SizeClientProps) => {
       <Separator />
 
       <DataTable
-        columns={SizeColumns}
+        columns={BillboardColumns}
         data={data}
-        filterKey="name"
+        filterKey="label"
       />
 
       <Heading
         title={"API"}
-        description="API Calls for Sizes"
+        description="API Calls for Billboards"
       />
       <Separator />
       <ApiList
-        entityName="sizes"
-        entityIdName="sizeId"
+        entityName="billboards"
+        entityIdName="billboardId"
       />
     </>
   )
 }
 
-export default SizeClient
+export default BillboardClient

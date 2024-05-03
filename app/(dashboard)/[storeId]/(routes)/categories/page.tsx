@@ -1,5 +1,5 @@
+import CategoryClient from "@/components/categories/category-client";
 import { CategoryColumn } from "@/components/categories/columns";
-import CategoryClient from "@/components/category-client";
 import prismadb from "@/lib/prismaDb";
 import { format } from "date-fns";
 

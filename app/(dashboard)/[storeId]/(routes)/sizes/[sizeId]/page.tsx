@@ -1,4 +1,4 @@
-import SizeForm from "@/components/size-form";
+import SizeForm from "@/components/sizes/size-form";
 import prismadb from "@/lib/prismaDb";
 
 interface SizePageProps {
