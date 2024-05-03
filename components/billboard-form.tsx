@@ -6,7 +6,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import Heading from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import useOrigin from "@/hooks/useOrigin";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Billboard } from "@prisma/client";
 import axios from "axios";
@@ -29,10 +28,8 @@ interface BillboardFormProps {
 }
 
 const BillboardForm = ({ initialData }: BillboardFormProps) => {
-
   const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
 
   const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
@@ -51,12 +48,12 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
     try {
       setLoading(true);
       if (initialData) {
-        await axios.post(`/api/${params.storeId}/billboards/${params.billboardId}`, data);
+        await axios.patch(`/api/${params.storeId}/billboards/${params.billboardId}`, data);
       } else {
-        await axios.patch(`/api/${params.storeId}/billboards`, data);
+        await axios.post(`/api/${params.storeId}/billboards`, data);
       }
       router.refresh();
-      router.push(`/${params.storeId}/billboards`);
+      router.push(`/${params.storeId}/billboards/`);
       toast.success(toastMessage);
     } catch (err) {
       toast.error("Something went wrong!");
