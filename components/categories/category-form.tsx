@@ -68,7 +68,7 @@ const CategoryForm = ({ initialData, billboards }: CategoryFormProps) => {
     try {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/categories/${params.categoryId}`);
-      router.push("/");
+      router.push(`/${params.storeId}/categories/`);
       router.refresh();
       toast.success("Category deleted.");
     } catch (error) {

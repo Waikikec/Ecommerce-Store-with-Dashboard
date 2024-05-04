@@ -30,7 +30,7 @@ export const ColorColumns: ColumnDef<ColorColumn>[] = [
   },
   {
     accessorKey: "createdAt",
-    header: "createdAt",
+    header: "Date",
   },
   {
     id: "actions",

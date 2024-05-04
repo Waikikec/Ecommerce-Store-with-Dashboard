@@ -66,8 +66,8 @@ const SizeForm = ({ initialData }: SizeFormProps) => {
     try {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/sizes/${params.sizeId}`);
+      router.push(`/${params.storeId}/sizes/`);
       router.refresh();
-      router.push("/");
       toast.success("Size deleted.");
     } catch (error) {
       toast.error("Make sure you removed all products using this size!");

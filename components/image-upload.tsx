@@ -57,7 +57,10 @@ const ImageUpload = ({
         ))}
       </div>
 
-      <CldUploadWidget onSuccess={onUpload} uploadPreset="ecommerce-admin">
+      <CldUploadWidget
+        onSuccess={onUpload}
+        uploadPreset="ecommerce-admin"
+      >
         {({ open }) => {
           return (
             <Button

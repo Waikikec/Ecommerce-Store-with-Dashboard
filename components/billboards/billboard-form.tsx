@@ -66,7 +66,7 @@ const BillboardForm = ({ initialData }: BillboardFormProps) => {
     try {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`);
-      router.push("/");
+      router.push(`/${params.storeId}/billboards/`);
       router.refresh();
       toast.success("Billboard deleted.");
     } catch (error) {

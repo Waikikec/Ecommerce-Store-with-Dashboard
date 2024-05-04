@@ -68,7 +68,7 @@ const ColorForm = ({ initialData }: ColorFormProps) => {
     try {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/colors/${params.colorId}`);
-      router.push("/");
+      router.push(`/${params.storeId}/colors/`);
       router.refresh();
       toast.success("Color deleted.");
     } catch (error) {
