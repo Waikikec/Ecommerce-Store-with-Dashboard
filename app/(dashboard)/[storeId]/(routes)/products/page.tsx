@@ -1,7 +1,7 @@
 import { ProductColumn } from "@/components/products/columns";
 import ProductClient from "@/components/products/product-client";
 import prismadb from "@/lib/prismaDb";
-import { priceFormatteer } from "@/lib/utils";
+import { priceFormatter } from "@/lib/utils";
 import { format } from "date-fns";
 
 const ProductsPage = async (
@@ -27,7 +27,7 @@ const ProductsPage = async (
     products.map((item) => ({
       id: item.id,
       name: item.name,
-      price: priceFormatteer.format(item.price.toNumber()),
+      price: priceFormatter.format(item.price.toNumber()),
       size: item.size.name,
       category: item.category.name,
       color: item.color.value,
