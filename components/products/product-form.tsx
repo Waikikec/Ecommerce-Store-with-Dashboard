@@ -134,10 +134,7 @@ const ProductForm = ({ initialData, categories, sizes, colors }: ProductFormProp
 
       {/* FORM */}
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-8 w-full"
-        >
+        <form className="space-y-8 w-full" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
             control={form.control}
             name="images"
@@ -148,10 +145,8 @@ const ProductForm = ({ initialData, categories, sizes, colors }: ProductFormProp
                   <ImageUpload
                     value={field.value.map((image) => image.url)}
                     disabled={loading}
-                    onChange={(url) => field
-                      .onChange([...field.value, { url }])}
-                    onRemove={(url) => field
-                      .onChange([...field.value.filter((current) => current.url !== url)])}
+                    onChange={(url) => field.onChange([...field.value, { url }])}
+                    onRemove={(url) => field.onChange([...field.value.filter((current) => current.url !== url)])}
                   />
                 </FormControl>
                 <FormMessage />

@@ -36,7 +36,7 @@ const ProductClient = ({ data }: ProductClientProps) => {
       <DataTable
         columns={ProductColumns}
         data={data}
-        filterKey="label"
+        filterKey="name"
       />
 
       <Heading

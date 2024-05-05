@@ -7,29 +7,31 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface ImageUploadProps {
+  value: string[];
   disabled?: boolean;
   onChange: (value: string) => void;
   onRemove: (value: string) => void;
-  value: string[];
 }
 
 const ImageUpload = ({
-  disabled, onChange, onRemove, value
+  value,
+  disabled,
+  onChange,
+  onRemove
 }: ImageUploadProps
 ) => {
-
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  const onUpload = (result: any) => {
-    onChange(result.info.secure_url);
-  }
-
   if (!isMounted) {
     return null;
+  }
+
+  const onUpload = (result: any) => {
+    onChange(result.info.secure_url);
   }
 
   return (
