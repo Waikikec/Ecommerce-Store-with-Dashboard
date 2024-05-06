@@ -22,9 +22,7 @@ const ProductList = ({ title, items }: ProductListProps) => {
           <ProductCard
             key={item.id}
             data={item}
-          >
-            {item.name}
-          </ProductCard>
+          />
         ))}
       </div>
     </div>
