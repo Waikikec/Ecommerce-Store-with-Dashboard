@@ -43,6 +43,7 @@ const Info = ({ data }: InfoProps) => {
         </div>
       </div>
 
+      {/* BUTTON */}
       <div className="mt-10 flex items-center gap-x-3">
         <Button className='flex items-center gap-x-2'>
           Add to Cart
