@@ -1,5 +1,6 @@
 "use client";
 
+import useCartHook from "@/hooks/useCartHook";
 import usePreviewModal from "@/hooks/usePreviewModal";
 import { ProductType } from "@/types";
 import { Expand, ShoppingCart } from "lucide-react";
@@ -17,6 +18,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
 
   const router = useRouter();
   const previewModal = usePreviewModal();
+  const cart = useCartHook();
 
   const handleClick = () => {
     router.push(`/product/${data.id}`);
@@ -26,6 +28,12 @@ const ProductCard = ({ data }: ProductCardProps) => {
     event.stopPropagation();
 
     previewModal.onOpen(data);
+  }
+
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+
+    cart.addItem(data);
   }
 
   return (
@@ -51,7 +59,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
             <IconButton
               icon={<ShoppingCart size={20} className="text-gray-600" />}
               className=""
-              onClick={() => { }}
+              onClick={onAddToCart}
             />
           </div>
         </div>
