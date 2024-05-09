@@ -6,7 +6,7 @@ interface AuthLayoutProps {
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
-    <div className='flex items-center justify-center h-full'>
+    <div className='h-full flex items-center justify-center'>
       {children}
     </div>
   )
