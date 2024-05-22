@@ -4,6 +4,7 @@ import prismadb from "@/lib/prismaDb"
 import { UserButton } from "@clerk/nextjs"
 import { auth } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation"
+import { ModeToggle } from "./mode-toggle"
 
 const Navbar = async () => {
 
@@ -26,6 +27,7 @@ const Navbar = async () => {
         <MainNavigation className="mx-6" />
 
         <div className="ml-auto flex items-center space-x-4">
+          <ModeToggle />
           <UserButton afterSignOutUrl="/" />
         </div>
       </div>
