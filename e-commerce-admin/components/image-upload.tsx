@@ -64,12 +64,16 @@ const ImageUpload = ({
         uploadPreset="ecommerce-admin"
       >
         {({ open }) => {
+          function handleOnClick() {
+            open();
+          }
+
           return (
             <Button
               type="button"
               variant={"secondary"}
               disabled={disabled}
-              onClick={() => open()}
+              onClick={handleOnClick}
             >
               <ImagePlusIcon className="h-4 w-4 mr-2" />
               Upload an Image

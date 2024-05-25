@@ -1,5 +1,4 @@
 "use client";
-import ImageUpload from "@/components/image-upload";
 import AlertModal from "@/components/modals/alert-modal";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -16,6 +15,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import * as z from 'zod';
+import ImageUpload from "../image-upload";
 import { Checkbox } from "../ui/checkbox";
 
 const formSchema = z.object({
@@ -142,12 +142,32 @@ const ProductForm = ({ initialData, categories, sizes, colors }: ProductFormProp
               <FormItem>
                 <FormLabel>Images</FormLabel>
                 <FormControl>
-                  <ImageUpload
-                    value={field.value.map((image) => image.url)}
-                    disabled={loading}
-                    onChange={(url) => field.onChange([...field.value, { url }])}
-                    onRemove={(url) => field.onChange([...field.value.filter((current) => current.url !== url)])}
-                  />
+                  <div className="flex space-x-4">
+                    {field.value.map((image, index) => (
+                      <ImageUpload
+                        key={index}
+                        value={image.url ? [image.url] : []}
+                        disabled={loading}
+                        onChange={(url) => {
+                          const newImages = [...field.value];
+                          newImages[index] = { url };
+                          field.onChange(newImages);
+                        }}
+                        onRemove={(url) => {
+                          const newImages = field.value.filter((_, i) => i !== index);
+                          field.onChange(newImages);
+                        }}
+                      />
+                    ))}
+                    <Button
+                      type="button"
+                      variant={"secondary"}
+                      disabled={loading}
+                      onClick={() => field.onChange([...field.value, { url: '' }])}
+                    >
+                      Add Image
+                    </Button>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
