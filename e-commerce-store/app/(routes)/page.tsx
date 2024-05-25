@@ -9,7 +9,7 @@ export const revalidate = 0;
 const HomePage = async () => {
 
   const products = await getProducts({ isFeatured: true });
-  const billboard = await getBillboard("ccfb4cca-f46e-49cb-8f95-3c1842337e63");
+  const billboard = await getBillboard("7bf50045-f749-4995-9e23-7a08ef05914c"); //TODO -> REMOVE HARD CODE --FIX ME
 
   return (
     <Container>
